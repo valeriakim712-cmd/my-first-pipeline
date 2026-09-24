@@ -1,0 +1,35 @@
+name: My First Pipeline
+
+# 1. Когда запускать пайплайн? (При каждом push-е в ветку main)
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # Запускаем виртуальный сервер на Linux
+
+    steps:
+      # Шаг A: Скачиваем ваш код
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      # Шаг B: Симулируем этап сборки (Build)
+      - name: Run Build Step
+        run: |
+          echo " Starting Build Stage..."
+          echo "Compiling files..."
+          echo "Build finished successfully!"
+
+      # Шаг C: Симулируем этап тестирования (Test)
+      - name: Run Automated Tests
+        run: |
+          echo " Running Tests..."
+          echo "Test 1: Passed"
+          echo "Test 2: Passed"
+
+      # Шаг D: Симулируем деплой (Deploy)
+      - name: Deploy Application
+        run: |
+          echo " Deploying to production server..."
+          echo "App is live!"
